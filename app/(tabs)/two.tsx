@@ -1,22 +1,14 @@
-import { Stack } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
-
-import { ScreenContent } from '~/components/ScreenContent';
+import { router, Stack } from 'expo-router';
+import { Button, Text, View } from 'react-native';
 
 export default function Home() {
   return (
     <>
-      <Stack.Screen options={{ title: 'Tab Two' }} />
-      <View style={styles.container}>
-        <ScreenContent path="app/(tabs)/two.tsx" title="Tab Two" />
+      <Stack.Screen options={{ title: 'Profile' }} />
+      <View className="flex flex-1 items-center justify-center bg-slate-500 px-8">
+        <Text>Você não está logado</Text>
+        <Button onPress={() => router.push('/login')} title="Logue" />
       </View>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-  },
-});
