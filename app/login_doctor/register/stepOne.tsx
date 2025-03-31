@@ -1,5 +1,6 @@
+import { Ionicons } from '@expo/vector-icons';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { router } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { useForm } from 'react-hook-form';
 import { Button, Text, View } from 'react-native';
 
@@ -15,12 +16,12 @@ const Login_doctor = () => {
   } = useForm({
     resolver: zodResolver(schema),
   });
-  const { addData } = useDatabase();
+  const { addData } = useDatabase('doctors');
 
   const onNextStep = (data: SchemaType) => {
     try {
       addData(data);
-      router.navigate('/(tabs)');
+      router.navigate('/login_doctor');
     } catch (err) {
       console.log(err);
     }
@@ -39,7 +40,10 @@ const Login_doctor = () => {
 
   return (
     <View className="flex-1 items-center justify-center gap-8 bg-stone-100 px-8">
-      <Text className="text-4xl text-stone-900 ">Registre-se</Text>
+      <View className="flex w-full flex-row gap-1.5">
+        <Ionicons name="medical-outline" size={32} />
+        <Text className="text-4xl text-stone-900 ">Registrar-se</Text>
+      </View>
       <View className="flex w-full gap-4">
         <Input
           error={errors.name?.message}
@@ -95,6 +99,14 @@ const Login_doctor = () => {
           />
         </View>
         <Button title="Submit" onPress={handleSubmit(onNextStep)} />
+        <View className="mt-4 flex flex-row items-center justify-between gap-2">
+          <Link href="/login_doctor" className="font-bold text-sky-950 underline">
+            Já possui uma conta?
+          </Link>
+          <Link href="/" className="font-bold text-sky-950 underline">
+            Inicio
+          </Link>
+        </View>
       </View>
     </View>
   );

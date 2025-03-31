@@ -18,18 +18,13 @@ const Login_doctor = () => {
   } = useForm<SchemaType>({
     resolver: zodResolver(schema),
   });
-  const { selectData } = useDatabase('doctors');
+  const { addData } = useDatabase('users');
   const onNextStep = async (data: SchemaType) => {
     console.log(data);
     try {
       setIsLoading(true);
-      const result = await selectData(data.email);
-      const dataArr: any[] = [];
-      result.forEach((item) => dataArr.push(item.data()));
-      if (dataArr.length === 0) return Alert.alert('Email não cadastrado');
-      if (dataArr[0].password === data.password) return router.navigate('/(tabs)');
-      if (dataArr[0].password !== data.password)
-        return Alert.alert('Alguma de suas informações estão invalidas');
+      await addData(data);
+      router.navigate('/login_user');
     } catch (err) {
       console.log(err);
     } finally {
@@ -40,8 +35,8 @@ const Login_doctor = () => {
   return (
     <View className="flex-1 items-center justify-center gap-8 bg-stone-100 px-8">
       <View className="flex w-full flex-row gap-1.5">
-        <Ionicons name="medical-outline" size={32} />
-        <Text className="text-4xl text-stone-900 ">Logar-se</Text>
+        <Ionicons name="person-circle-outline" size={32} />
+        <Text className="text-4xl text-stone-900 ">Registrar-se</Text>
       </View>
       <View className="flex w-full gap-4">
         <Input
@@ -62,8 +57,8 @@ const Login_doctor = () => {
 
         <Button title="Submit" onPress={handleSubmit(onNextStep)} disabled={isLoading} />
         <View className="mt-4 flex flex-row items-center justify-between gap-2">
-          <Link href="/login_doctor/register/stepOne" className="font-bold text-sky-950 underline">
-            Não possui uma conta?
+          <Link href="/login_user" className="font-bold text-sky-950 underline">
+            Já tem conta?
           </Link>
           <Link href="/" className="font-bold text-sky-950 underline">
             Inicio

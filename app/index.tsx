@@ -11,7 +11,7 @@ const index = () => {
         <Text className="text-4xl">Bem vindo ao o SaudeEnsina</Text>
       </View>
       <View className="flex w-full flex-row justify-between">
-        <Card route="/login_doctor" icon="person-circle-outline" title="Um paciente" />
+        <Card route="/login_user" icon="person-circle-outline" title="Um paciente" />
         <Card route="/login_doctor" icon="medical-outline" title="Médico(a)" />
       </View>
     </View>

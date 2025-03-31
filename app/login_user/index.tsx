@@ -18,7 +18,7 @@ const Login_doctor = () => {
   } = useForm<SchemaType>({
     resolver: zodResolver(schema),
   });
-  const { selectData } = useDatabase('doctors');
+  const { selectData } = useDatabase('users');
   const onNextStep = async (data: SchemaType) => {
     console.log(data);
     try {
@@ -40,7 +40,7 @@ const Login_doctor = () => {
   return (
     <View className="flex-1 items-center justify-center gap-8 bg-stone-100 px-8">
       <View className="flex w-full flex-row gap-1.5">
-        <Ionicons name="medical-outline" size={32} />
+        <Ionicons name="person-circle-outline" size={32} />
         <Text className="text-4xl text-stone-900 ">Logar-se</Text>
       </View>
       <View className="flex w-full gap-4">
@@ -62,12 +62,8 @@ const Login_doctor = () => {
 
         <Button title="Submit" onPress={handleSubmit(onNextStep)} disabled={isLoading} />
         <View className="mt-4 flex flex-row items-center justify-between gap-2">
-          <Link href="/login_doctor/register/stepOne" className="font-bold text-sky-950 underline">
-            Não possui uma conta?
-          </Link>
-          <Link href="/" className="font-bold text-sky-950 underline">
-            Inicio
-          </Link>
+          <Link href="/login_user/singIN" className='text-sky-950 font-bold underline'>Não possui uma conta?</Link>
+          <Link href="/" className='text-sky-950 font-bold underline'>Inicio</Link>
         </View>
       </View>
     </View>

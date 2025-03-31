@@ -5,9 +5,24 @@ export default function Home() {
   return (
     <>
       <Stack.Screen options={{ title: 'Profile' }} />
-      <View className="flex flex-1 items-center justify-center bg-slate-500 px-8">
-        <Text>Você não está logado</Text>
-        <Button onPress={() => router.push('/login')} title="Logue" />
+      <View className="flex flex-1 items-center justify-center gap-4 bg-stone-100 px-8">
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Button onPress={() => router.push('/login_user')} title="Deslogar" />
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
+        <Text className='text-4xl '>Deslogar!</Text>
       </View>
     </>
   );
